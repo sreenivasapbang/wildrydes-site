@@ -59,8 +59,17 @@ var WildRydes = window.WildRydes || {};
         };
         var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
 const attributeList = [];
+ attributeList.push(new CognitoUserAttribute({
+            Name: 'email',
+            Value: email
+        }));
+ attributeList.push(new CognitoUserAttribute({
+            Name: 'given_name',
+            Value: 'test'
+        }));
+/*        
 attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({ Name: 'email', Value: email }, { Name: 'given_name', Value: 'test' },{ Name: 'family_name', Value: '' }));
-/*
+
 userPool.signUp(registerData.Username, registerData.Password, attributeList, null, (err, result) => {
   if (err) {
     console.error(err);
