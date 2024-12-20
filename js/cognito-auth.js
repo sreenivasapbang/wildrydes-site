@@ -59,11 +59,11 @@ var WildRydes = window.WildRydes || {};
         };
         var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
 const attributeList = [];
- attributeList.push(new CognitoUserAttribute({
+ attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({
             Name: 'email',
             Value: email
         }));
- attributeList.push(new CognitoUserAttribute({
+ attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({
             Name: 'given_name',
             Value: 'test'
         }));
