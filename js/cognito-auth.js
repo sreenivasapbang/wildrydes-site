@@ -52,14 +52,14 @@ var WildRydes = window.WildRydes || {};
      * Cognito User Pool functions
      */
 
-    function register(emailin, password, onSuccess, onFailure) {
+    function register(email, password, onSuccess, onFailure) {
         var dataEmail = {
             Name: 'email',
-            Value: emailin
+            Value: email
         };
         var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
 const attributeList = [];
-attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({ Name: 'email', Value: emailin }, { Name: 'given_name', Value: '' },{ Name: 'family_name', Value: '' }));
+attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({ Name: 'email', Value: email }, { Name: 'given_name', Value: '' },{ Name: 'family_name', Value: '' }));
 /*
 userPool.signUp(registerData.Username, registerData.Password, attributeList, null, (err, result) => {
   if (err) {
