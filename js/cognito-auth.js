@@ -58,8 +58,17 @@ var WildRydes = window.WildRydes || {};
             Value: email
         };
         var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
+const attributeList = [];
+attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({ Name: 'email', Value: email }));
 
-        userPool.signUp(toUsername(email), password, [attributeEmail], null,
+/*userPool.signUp(registerData.Username, registerData.Password, attributeList, null, (err, result) => {
+  if (err) {
+    console.error(err);
+    return;
+  }
+
+        userPool.signUp(toUsername(email), password, [attributeEmail], null, */
+        userPool.signUp(toUsername(email), password, attributeList, null,
             function signUpCallback(err, result) {
                 if (!err) {
                     onSuccess(result);
