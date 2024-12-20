@@ -59,7 +59,7 @@ var WildRydes = window.WildRydes || {};
         };
         var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
 const attributeList = [];
-attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({ Name: 'email', Value: email }, { Name: 'given_name', Value: '' },{ Name: 'family_name', Value: '' }));
+attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({ Name: 'email', Value: email }, { Name: 'given_name', Value: 'test' },{ Name: 'family_name', Value: '' }));
 /*
 userPool.signUp(registerData.Username, registerData.Password, attributeList, null, (err, result) => {
   if (err) {
@@ -69,10 +69,7 @@ userPool.signUp(registerData.Username, registerData.Password, attributeList, nul
 
    userPool.signUp(toUsername(email), password, [attributeEmail], null, */
         
-        userPool.signUp(toUsername(email), password, 'attributes': {
-        'email': email,
-        'given_name': 'test',
-    }, null,
+        userPool.signUp(toUsername(email), password, attributeList, null,
             function signUpCallback(err, result) {
                 if (!err) {
                     onSuccess(result);
